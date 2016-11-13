@@ -1,0 +1,139 @@
+-- phpMyAdmin SQL Dump
+-- version 3.3.9
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Nov 01, 2014 at 05:04 
+-- Server version: 5.5.8
+-- PHP Version: 5.3.5
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `db_sekolah`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_alumni`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_alumni` (
+  `id_alumni` int(10) NOT NULL,
+  `nama_alumni` varchar(50) NOT NULL,
+  `tgl_lahir` date NOT NULL,
+  `angkatan` varchar(20) NOT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id_alumni`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_alumni`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_guru`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_guru` (
+  `id_guru` int(10) NOT NULL AUTO_INCREMENT,
+  `NIP` varchar(20) NOT NULL,
+  `nama_guru` varchar(30) NOT NULL,
+  `tanggal_lahir` date NOT NULL,
+  `tempat_lahir` varchar(30) NOT NULL,
+  `agama` varchar(20) NOT NULL,
+  `alamat` varchar(100) NOT NULL,
+  `pangkat` varchar(20) NOT NULL,
+  `jabatan` varchar(20) NOT NULL,
+  `telpon` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_guru`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1244458 ;
+
+--
+-- Dumping data for table `tbl_guru`
+--
+
+INSERT INTO `tbl_guru` (`id_guru`, `NIP`, `nama_guru`, `tanggal_lahir`, `tempat_lahir`, `agama`, `alamat`, `pangkat`, `jabatan`, `telpon`, `email`) VALUES
+(1244456, '2121', 'apri', '1995-11-14', 'manna', 'islam', 'pemangku basri', 'III A', 'guru', '087739381664', ''),
+(1244457, '2123', 'sugeng', '1995-11-14', 'manna', 'islam', 'pemangku basri', 'III A', 'guru', '087739381664', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_jadwal`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_jadwal` (
+  `id_jadwal` int(10) NOT NULL AUTO_INCREMENT,
+  `jadwal` varchar(30) NOT NULL,
+  PRIMARY KEY (`id_jadwal`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `tbl_jadwal`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_kelas`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_kelas` (
+  `id_kelas` int(10) NOT NULL AUTO_INCREMENT,
+  `kelas` varchar(30) NOT NULL,
+  `nis` int(10) NOT NULL,
+  PRIMARY KEY (`id_kelas`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `tbl_kelas`
+--
+
+INSERT INTO `tbl_kelas` (`id_kelas`, `kelas`, `nis`) VALUES
+(1, 'ipa 2', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_siswa`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_siswa` (
+  `nis` int(10) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(50) NOT NULL,
+  `tgl_lahir` date NOT NULL,
+  `alamat` text NOT NULL,
+  `tempat_lahir` varchar(50) NOT NULL,
+  `agama` varchar(20) NOT NULL,
+  `telpon` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `nama_ayah` varchar(50) NOT NULL,
+  `pekerjaan_ayah` varchar(50) NOT NULL,
+  `nama_ibu` varchar(50) NOT NULL,
+  `pekerjaan_ibu` varchar(50) NOT NULL,
+  `alamat_ortu` varchar(100) NOT NULL,
+  `id_kelas` int(10) NOT NULL,
+  PRIMARY KEY (`nis`),
+  UNIQUE KEY `id_kelas` (`id_kelas`),
+  UNIQUE KEY `id_kelas_2` (`id_kelas`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `tbl_siswa`
+--
+
+INSERT INTO `tbl_siswa` (`nis`, `nama`, `tgl_lahir`, `alamat`, `tempat_lahir`, `agama`, `telpon`, `email`, `nama_ayah`, `pekerjaan_ayah`, `nama_ibu`, `pekerjaan_ibu`, `alamat_ortu`, `id_kelas`) VALUES
+(1, 'edi sudrajat', '1996-11-21', 'jl. gejayan', 'indramayu', 'islam', '087721829372', '', 'sianu', 'pns', 'binari', 'irt', 'jl.mangga', 0);
