@@ -58,7 +58,12 @@ if(isset($_GET['bagian'])) {
                         <?php
                         $tanggal=date("Y-m-d");
 						if(isset ($_POST['simpanmateri'])){
-							$pelajaran->simpanmateri($_POST['judul_materi'],$tanggal,$_POST['id_matpel'] ,$_FILES['file_materi']);
+                            // print_r($_FILES);
+                            // $namafile = $_FILES['file_materi']['name'];
+                            // $lokasifile= $_FILES['file_materi']['tmp_name'];
+                            // move_uploaded_file($lokasifile,"file_upload/".$namafile);
+                            
+							$pelajaran->simpanmateri($_POST['judul_materi'],$tanggal,$_POST['id_matpel'],$_FILES['file_materi']);
 							echo"<script>alert('data tersimpan'); window.location='index.php?halaman=materi';</script>";
 							}
 						?>

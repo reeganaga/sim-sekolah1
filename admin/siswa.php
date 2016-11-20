@@ -187,7 +187,7 @@ if (isset($_GET['bagian'])) {
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="table-responsive">
-                      <form role="form" data-toggle="validator" class="form-horizontal style-form" method="POST" enctype="multipart/form-data">
+                      <form role="form" class="form-horizontal style-form" method="POST" enctype="multipart/form-data">
                        <?php
                       $muridbelajar = $murid->ambilsiswa($_GET['id_siswa']);
                       foreach ($muridbelajar as $pecah) {

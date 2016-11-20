@@ -158,7 +158,7 @@ elseif($_GET['bagian']=='siswa') { ?>
 						
 				        </tbody>
 		                </table>
-		                <button class="btn btn-primary">Cetak</button>
+		                <a href="print-nilai-siswa.php?id_kelas=<?php echo $_GET['id_kelas']; ?>&id_matpel=<?php echo $_GET['id_kelas']; ?>" class="btn btn-primary">Cetak</a>
 	                </div><! --/content-panel -->
 	                <br>
 	              </div>
@@ -278,11 +278,12 @@ else
 		                <tr>
 		                	<th>No</th>
 		                	<th>Mata Pelajaran</th>
+		                	<?php if ($_SESSION['tipe']=='siswa'): ?>
 		                	<th>Nilai Tugas</th>
 		                	<th>Nilai UTS</th>
 		                	<th>Nilai UAS</th>
-		                	<th>Nilai Rata-rata</th>
-
+		                	<th>Nilai Rata Rata</th>
+		                	<?php endif ?>
 		                	
 		                </tr>
 		                </thead>
@@ -331,13 +332,15 @@ else
 							$tampilnilai = $nilai->tampilnilaipersiswa($_SESSION['nomorinduk'],$siswamatpel['id_matpel'],$smtr,$th);
 							if (is_array($tampilnilai))
 							{
+								// print_r($tampilnilai);
 								foreach ($tampilnilai as $tampilnilaisiswa)
 								{
+									// print_r($tampilnilaisiswa);
 								?>
 										<td><?php echo $tampilnilaisiswa['nilai_tugas'] ; ?></td>
 										<td><?php echo $tampilnilaisiswa['nilai_mid'] ; ?></td>
 										<td><?php echo $tampilnilaisiswa['nilai_ujian'] ; ?></td>
-										<td><?php echo $tampilnilaisiswa['nilai_total'] ; ?></td>
+										<td><?php echo number_format($tampilnilaisiswa['nilai_total']/3,2,',',',') ; ?></td>
 								</tr>
 								<?php
 								}
@@ -345,6 +348,9 @@ else
 							
 							$nomor++;
 							}
+						?>
+						</tr>
+						<?php
 						}
 							?>
 						</table>
@@ -358,7 +364,7 @@ else
 						} ?>
 				        </tbody>
 		                </table>
-		                <a href="print.php?noinduk=<?php echo  $_SESSION['nomorinduk'] ; ?>&smtr=<?php echo $smtr; ?>&tahun=<?php echo $th; ?>" target="_blank" class="btn btn-primary">Cetak</a>
+		                <!-- <a href="print.php?noinduk=<?php echo  $_SESSION['nomorinduk'] ; ?>&smtr=<?php echo $smtr; ?>&tahun=<?php echo $th; ?>" target="_blank" class="btn btn-primary">Cetak</a> -->
 	                </div><! --/content-panel -->
 	                <br>
 	              </div>

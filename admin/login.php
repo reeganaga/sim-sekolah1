@@ -4,7 +4,7 @@ $db =new Database();
 $db->koneksi();
 $login = new login();
 
-echo "session =";print_r($_SESSION);
+// echo "session =";print_r($_SESSION);
 if(!empty($_SESSION ['username'])){
   echo "<script>alert('anda harus logout');window.location='index.php'; </script>";
 }

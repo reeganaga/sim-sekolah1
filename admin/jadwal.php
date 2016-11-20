@@ -160,7 +160,9 @@ if(isset($_GET['bagian'])){
 		                	<th>Judul jadwal</th>
                       <th>Nama Kelas</th>
                       <th>File Jadwal</th>
+                      <?php if($_SESSION['tipe']=='admin' || $_SESSION['tipe']=='guru'){ ?>
 		                	<th>aksi</th>
+                      <?php } ?>
 		                </tr>
 		                </thead>
 		                <tbody>
@@ -196,8 +198,9 @@ if(isset($_GET['bagian'])){
 							foreach ($kelas as $kelasjadwal) {
 						?>
 						<tr>
-							<td> <?php echo $nomor; ?></td>
-							<td> <?php echo $kelasjadwal ['judul_jadwal']; ?></td>
+              <td> <?php echo $nomor; ?></td>
+              <td> <?php echo $kelasjadwal ['judul_jadwal']; ?></td>
+							<td> <?php echo $kelasjadwal['nama_kelas']; ?></td>
 							<td><a href="file_upload/<?php echo $kelasjadwal['file_jadwal']; ?>"><?php echo $kelasjadwal['file_jadwal']; ?></a></td>
 							
 						</tr>
